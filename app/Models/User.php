@@ -29,6 +29,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
     static $rules = [
 		'user_name' => 'required',
+    'user_username' => 'required',
 		'user_ci' => 'required',
 		'user_email' => 'required',
 		'password' => 'required',
@@ -44,7 +45,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['user_name','user_ci','user_email','password','user_number','user_date_of_birth','user_gender'];
+    protected $fillable = ['user_name','user_surname','user_ci','user_email','password','user_number','user_date_of_birth','user_gender'];
 
 
     /**

@@ -6,6 +6,14 @@
             {{ Form::text('user_name', $user->user_name, ['class' => 'form-control' . ($errors->has('user_name') ? ' is-invalid' : ''), 'placeholder' => 'User Name']) }}
             {!! $errors->first('user_name', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
+        <div class="form-group">
+            {{ Form::label('user_surname') }}
+            {{ Form::text('user_surname', $user->user_surname, ['class' => 'form-control' . ($errors->has('user_surname') ? ' is-invalid' : ''), 'placeholder' => 'Apellido']) }}
+            {!! $errors->first('user_surname', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+
+
         <div class="form-group">
             {{ Form::label('user_ci') }}
             {{ Form::text('user_ci', $user->user_ci, ['class' => 'form-control' . ($errors->has('user_ci') ? ' is-invalid' : ''), 'placeholder' => 'User Ci']) }}
@@ -18,7 +26,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('password') }}
-            {{ Form::text('password', $user->password, ['class' => 'form-control' . ($errors->has('user_password') ? ' is-invalid' : ''), 'placeholder' => 'User Password']) }}
+            {{ Form::text('password', $user->password, ['class' => 'form-control' . ($errors->has('password') ? ' is-invalid' : ''), 'placeholder' => 'User Password']) }}
             {!! $errors->first('password', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

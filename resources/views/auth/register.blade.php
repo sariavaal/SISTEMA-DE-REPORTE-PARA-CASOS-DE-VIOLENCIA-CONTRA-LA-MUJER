@@ -12,11 +12,24 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="user_name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre y Apellido') }}</label>
+                            <label for="user_name" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="user_name" type="text" name="user_name" value="">
                                 @error('user_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="user_surname" class="col-md-4 col-form-label text-md-end">{{ __('Apellido') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="user_surname" type="text" name="user_surname" value="">
+                                @error('user_surname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

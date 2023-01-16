@@ -157,12 +157,17 @@ return [
     |
     */
 
-    'custom' => [
+    /*'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
-    ],
+    ],*/
 
+    'custom' => [
+        'password' => [
+            'confirmed' => 'La contraseña no coincide',
+        ],
+    ],
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes

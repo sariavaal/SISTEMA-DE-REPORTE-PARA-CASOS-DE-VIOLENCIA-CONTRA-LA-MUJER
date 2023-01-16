@@ -17,6 +17,7 @@ return new class extends Migration
             $table->engine="InnoDB";
              $table->bigIncrements('id');
              $table->string('user_name');
+             $table->string('user_surname');
              $table->integer('user_ci');
              $table->string('user_email');
              $table->string('password');

@@ -34,14 +34,14 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                        <th>id</th>
                                         
-										<th>User Name</th>
-										<th>User Ci</th>
-										<th>User Email</th>
-										<th>User Password</th>
-										<th>User Date Of Birth</th>
-										<th>User Gender</th>
+										<th>Nombre</th>
+                                        <th>Apellido</th>
+										<th>Cédula de identidad</th>
+										<th>Correo</th>
+										<th>Fecha de Nacimiento</th>
+										<th>Género</th>
 
                                         <th></th>
                                     </tr>
@@ -52,9 +52,9 @@
                                             <td>{{ ++$i }}</td>
                                             
 											<td>{{ $user->user_name }}</td>
+                                            <td>{{ $user->user_surname }}</td>
 											<td>{{ $user->user_ci }}</td>
 											<td>{{ $user->user_email }}</td>
-											<td>{{ $user->user_password }}</td>
 											<td>{{ $user->user_date_of_birth }}</td>
 											<td>{{ $user->user_gender }}</td>
 
