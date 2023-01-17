@@ -93,9 +93,9 @@
                             <div class="col-md-6">
                                 <select name="user_gender" class="form-select" id="floatingSelectGrid">
                                     <option selected>Seleccionar</option>
-                                    <option value="1">Femenino</option>
-                                    <option value="2">Masculino</option>
-                                    <option value="3">Sin especificar</option>
+                                    <option value="Femenino">Femenino</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Sin especificar">Sin especificar</option>
                                 </select>
                                 @error('user_gender')
                                     <span class="invalid-feedback" role="alert">

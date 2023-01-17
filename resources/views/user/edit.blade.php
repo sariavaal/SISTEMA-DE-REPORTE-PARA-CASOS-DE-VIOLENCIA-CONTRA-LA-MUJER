@@ -13,12 +13,12 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update User</span>
+                        <span class="card-title">Editar usuario</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('users.update', $user->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
-                            @csrf
+                        <form method="POST" action="{{ route('users.update', $user->id) }}"  role="form">    
+                        <input type="hidden" name="_method" value="PUT">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                             @include('user.form')
 

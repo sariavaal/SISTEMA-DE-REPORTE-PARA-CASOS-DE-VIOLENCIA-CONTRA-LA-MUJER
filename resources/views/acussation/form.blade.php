@@ -1,14 +1,16 @@
 <div class="box box-info padding-1">
     <div class="box-body">
-        
+
         <div class="form-group">
-            {{ Form::label('users_id') }}
-            {{ Form::text('users_id', $acussation->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => 'Users Id']) }}
+           
+            {{ Form::hidden('users_id',auth()->user()->id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => '']) }}
             {!! $errors->first('users_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
+
         <div class="form-group">
             {{ Form::label('police_id') }}
-            {{ Form::text('police_id', $acussation->police_id, ['class' => 'form-control' . ($errors->has('police_id') ? ' is-invalid' : ''), 'placeholder' => 'Police Id']) }}
+            {{ Form::select('police_id',$user, $acussation->police_id, ['class' => 'form-control' . ($errors->has('police_id') ? ' is-invalid' : ''), 'placeholder' => 'Police Id']) }}
             {!! $errors->first('police_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">

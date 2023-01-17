@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User
@@ -26,10 +27,10 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasRoles;
     static $rules = [
 		'user_name' => 'required',
-    'user_username' => 'required',
+    'user_surname' => 'required',
 		'user_ci' => 'required',
 		'user_email' => 'required',
 		'password' => 'required',

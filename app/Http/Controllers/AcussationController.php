@@ -35,7 +35,8 @@ class AcussationController extends Controller
     public function create()
     {
         $acussation = new Acussation();
-        return view('acussation.create', compact('acussation'));
+        $user= User::pluck('user_name','id');
+        return view('acussation.create', compact('acussation','user'));
     }
 
     /**

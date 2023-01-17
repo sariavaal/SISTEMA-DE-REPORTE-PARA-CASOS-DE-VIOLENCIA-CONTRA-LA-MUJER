@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Acussation;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 /**
  * Class UserController
  * @package App\Http\Controllers
@@ -32,9 +32,9 @@ class UserController extends Controller
      */
     public function create()
     {
-       /* $user = new User();
-        return view('user.create', compact('user'));*/
-        return view('user.create');
+        $user = new User();
+        return view('user.create', compact('user'));
+        
 
 
     }
@@ -52,7 +52,7 @@ class UserController extends Controller
         $user = User::create($request->all());
 
         return redirect()->route('users.index')
-            ->with('success', 'User created successfully.');
+            ->with('success', 'Usuario creado con éxito.');
     }
 
     /**
@@ -77,7 +77,6 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-
         return view('user.edit', compact('user'));
     }
 
@@ -91,12 +90,14 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         request()->validate(User::$rules);
-
-        $user->update($request->all());
-
+        $parametros = $request->all();
+        $parametros["password"] = Hash::make($request->password);
+        $user->update($parametros);
         return redirect()->route('users.index')
-            ->with('success', 'User updated successfully');
+            ->with('success', 'Datos actualizados con éxito');
     }
+
+   
 
     /**
      * @param int $id
@@ -108,6 +109,6 @@ class UserController extends Controller
         $user = User::find($id)->delete();
 
         return redirect()->route('users.index')
-            ->with('success', 'User deleted successfully');
+            ->with('success', 'Usuario eliminado con éxito');
     }
 }

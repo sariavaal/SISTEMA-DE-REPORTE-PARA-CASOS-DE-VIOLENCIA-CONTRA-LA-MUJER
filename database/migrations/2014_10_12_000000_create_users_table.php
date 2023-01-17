@@ -22,7 +22,7 @@ return new class extends Migration
              $table->string('user_email');
              $table->string('password');
              $table->string('user_number');
-             $table->dateTime('user_date_of_birth');
+             $table->date('user_date_of_birth');
              $table->string('user_gender');
  
              $table->timestamps();

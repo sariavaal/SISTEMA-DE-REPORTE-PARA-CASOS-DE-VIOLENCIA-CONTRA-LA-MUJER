@@ -34,7 +34,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>id</th>
+                                        
                                         
 										<th>Nombre</th>
                                         <th>Apellido</th>
@@ -49,7 +49,7 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                           
                                             
 											<td>{{ $user->user_name }}</td>
                                             <td>{{ $user->user_surname }}</td>
