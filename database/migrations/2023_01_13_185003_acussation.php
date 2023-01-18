@@ -20,8 +20,6 @@ return new class extends Migration
             $table->bigInteger('users_id')->unsigned();
             $table->bigInteger('police_id')->unsigned();
             $table->string('type_of_acusation');
-            $table->string('standard_acussation');
-            $table->string('urgent_acussation');
             $table->double('lat_lon');
             $table->timestamps();
 

@@ -29,8 +29,6 @@ class Acussation extends Model
 		'users_id' => 'required',
 		'police_id' => 'required',
 		'type_of_acusation' => 'required',
-		'standard_acussation' => 'required',
-		'urgent_acussation' => 'required',
 		'lat_lon' => 'required',
     ];
 
@@ -41,7 +39,7 @@ class Acussation extends Model
      *
      * @var array
      */
-    protected $fillable = ['users_id','police_id','type_of_acusation','standard_acussation','urgent_acussation','lat_lon'];
+    protected $fillable = ['users_id','police_id','type_of_acusation','lat_lon'];
 
 
     /**

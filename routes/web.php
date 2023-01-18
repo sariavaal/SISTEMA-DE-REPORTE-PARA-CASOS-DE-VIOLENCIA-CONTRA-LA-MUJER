@@ -28,6 +28,13 @@ Route::resource('users', App\Http\Controllers\UserController::class)->middleware
 Route::resource('acussations', App\Http\Controllers\AcussationController::class)->middleware('auth');
 
 
+
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+
+
 

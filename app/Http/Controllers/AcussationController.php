@@ -52,7 +52,7 @@ class AcussationController extends Controller
         $acussation = Acussation::create($request->all());
 
         return redirect()->route('acussations.index')
-            ->with('success', 'Acussation created successfully.');
+            ->with('success', 'Denuncia realizada.');
     }
 
     /**

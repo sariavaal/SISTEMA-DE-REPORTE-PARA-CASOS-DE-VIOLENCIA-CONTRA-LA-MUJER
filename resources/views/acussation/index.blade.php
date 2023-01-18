@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Acussation') }}
+                                {{ __('Denuncias') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('acussations.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Realizar denuncia') }}
                                 </a>
                               </div>
                         </div>
@@ -36,12 +36,10 @@
                                     <tr>
                                         
                                         
-										<th>Users Id</th>
-										<th>Police Id</th>
-										<th>Type Of Acusation</th>
-										<th>Standard Acussation</th>
-										<th>Urgent Acussation</th>
-										<th>Lat Lon</th>
+										<th>Id Usuario</th>
+										<th>Id policía</th>
+										<th>Tipo de acusación</th>
+										<th>Ubicación</th>
 
                                         <th></th>
                                     </tr>
@@ -54,8 +52,6 @@
 											<td>{{ $acussation->users_id }}</td>
 											<td>{{ $acussation->police_id }}</td>
 											<td>{{ $acussation->type_of_acusation }}</td>
-											<td>{{ $acussation->standard_acussation }}</td>
-											<td>{{ $acussation->urgent_acussation }}</td>
 											<td>{{ $acussation->lat_lon }}</td>
 
                                             <td>
