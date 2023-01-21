@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Acussation;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $acussation = new Acussation();
+        $user= User::pluck('user_name','id');
+        return view('acussation.create', compact('acussation','user'));
+        //return view('home');
     }
 }

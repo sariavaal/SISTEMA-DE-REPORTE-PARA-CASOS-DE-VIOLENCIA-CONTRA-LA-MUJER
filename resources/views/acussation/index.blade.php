@@ -37,7 +37,7 @@
                                         
                                         
 										<th>Id Usuario</th>
-										<th>Id policía</th>
+										<th>Estado</th>
 										<th>Tipo de acusación</th>
 										<th>Ubicación</th>
 
@@ -49,10 +49,12 @@
                                         <tr>
                                            
                                             
-											<td>{{ $acussation->users_id }}</td>
-											<td>{{ $acussation->police_id }}</td>
+											<td>{{ $acussation->users_id }}</td> 
+                                            <td>{{ $acussation->status }}</td>
 											<td>{{ $acussation->type_of_acusation }}</td>
 											<td>{{ $acussation->lat_lon }}</td>
+                                          
+                                            
 
                                             <td>
                                                 <form action="{{ route('acussations.destroy',$acussation->id) }}" method="POST">
@@ -60,7 +62,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('acussations.edit',$acussation->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
                                                 </form>
                                             </td>
                                         </tr>

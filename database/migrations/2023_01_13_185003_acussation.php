@@ -18,13 +18,13 @@ return new class extends Migration
             $table->engine="InnoDB";
             $table->bigIncrements('id');
             $table->bigInteger('users_id')->unsigned();
-            $table->bigInteger('police_id')->unsigned();
+            $table->enum('status', ['pending', 'in process','finished'])->nullable()->default('pending'); 
             $table->string('type_of_acusation');
+            $table->string('description');
             $table->double('lat_lon');
             $table->timestamps();
 
             $table->foreign('users_id')->references('id')->on('users')->onDelete("cascade");
-            $table->foreign('police_id')->references('id')->on('users')->onDelete("cascade");
 
 
         });

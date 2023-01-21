@@ -1,3 +1,7 @@
+
+
+
+
 <div class="box box-info padding-1">
     <div class="box-body">
 
@@ -25,6 +29,13 @@
             {{ Form::checkbox('urgent_acussation', $acussation->urgent_acussation, ['class' => 'form-control' . ($errors->has('urgent_acussation') ? ' is-invalid' : ''), 'placeholder' => '']) }}
             {!! $errors->first('urgent_acussation', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
+        <div class="form-group">
+            {{ Form::label('Descripción') }}
+            {{ Form::text('description', $acussation->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+            {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+
         <div class="form-group">
             {{ Form::label('Ubicación') }}
             {{ Form::text('lat_lon', $acussation->lat_lon, ['class' => 'form-control' . ($errors->has('lat_lon') ? ' is-invalid' : ''), 'placeholder' => '']) }}
@@ -33,6 +44,6 @@
 
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+        <button type="submit" class="btn btn-primary mt-2">Enviar</button>
     </div>
 </div>

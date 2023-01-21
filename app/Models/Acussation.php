@@ -27,8 +27,9 @@ class Acussation extends Model
     
     static $rules = [
 		'users_id' => 'required',
-		'police_id' => 'required',
 		'type_of_acusation' => 'required',
+        'description'=>'required',
+        'status'=> 'required',
 		'lat_lon' => 'required',
     ];
 
@@ -39,16 +40,16 @@ class Acussation extends Model
      *
      * @var array
      */
-    protected $fillable = ['users_id','police_id','type_of_acusation','lat_lon'];
+    protected $fillable = ['users_id','status','type_of_acusation','description','lat_lon'];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function police()
+    /*public function police()
     {
         return $this->hasOne('App\Models\Police', 'id', 'police_id');
-    }
+    }*/
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

@@ -40,6 +40,7 @@
                         </li>
                     </ul>
                     @endif
+                    
                   
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -75,13 +76,26 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
+                    </ul>   
                 </div>
             </div>
         </nav>
 
         <main class="py-4">
-            @yield('content')
+        @if (Auth::check())
+       
+        <div class="card-header col-auto p-3 text-center">
+        <div class="card-body">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ __('Sesión iniciada!') }}
+                   
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        </div>
+                    </div>
+ @endif
+            @yield('content') 
+           
         </main>
     </div>
 </body>

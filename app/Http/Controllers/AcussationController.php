@@ -35,9 +35,15 @@ class AcussationController extends Controller
     public function create()
     {
         $acussation = new Acussation();
+        
         $user= User::pluck('user_name','id');
         return view('acussation.create', compact('acussation','user'));
     }
+
+
+
+   
+
 
     /**
      * Store a newly created resource in storage.
@@ -48,9 +54,8 @@ class AcussationController extends Controller
     public function store(Request $request)
     {
         request()->validate(Acussation::$rules);
-
         $acussation = Acussation::create($request->all());
-
+        
         return redirect()->route('acussations.index')
             ->with('success', 'Denuncia realizada.');
     }

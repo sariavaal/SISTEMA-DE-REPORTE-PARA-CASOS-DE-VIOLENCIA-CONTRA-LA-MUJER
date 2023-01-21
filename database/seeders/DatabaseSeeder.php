@@ -55,8 +55,8 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole($admin);
 
-          //user admin para pruebas
-          $user = User::create([
+        //user admin para pruebas
+        $user = User::create([
             'user_name' => 'Elizabeth',
             'user_surname' =>'Grantt',
             'user_ci' => '3256489',
