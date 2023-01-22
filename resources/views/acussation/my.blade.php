@@ -17,7 +17,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('acussations.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('home') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Realizar denuncia') }}
                                 </a>
                               </div>
@@ -34,39 +34,21 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        
-                                        
 										<th>Id Usuario</th>
 										<th>Estado</th>
 										<th>Tipo de acusación</th>
 										<th>Ubicación</th>
                                         <th>Descripción</th>
-
-
-                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($acussations as $acussation)
                                         <tr>
-                                           
-                                            
 											<td>{{ $acussation->users_id }}</td> 
                                             <td>{{ $acussation->status }}</td>
 											<td>{{ $acussation->type_of_acusation }}</td>
-											<td>{{ $acussation->lat_lon }}</td>
-                                            <td>{{ $acussation->description }}</td>
-                                            
-
-                                            <td>
-                                                <form action="{{ route('acussations.destroy',$acussation->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('acussations.show',$acussation->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('acussations.edit',$acussation->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> Borrar</button>
-                                                </form>
-                                            </td>
+											<td>{{ $acussation->lat.','.$acussation->lon }}</td>
+                                            <td>{{ $acussation->description }}</td> 
                                         </tr>
                                     @endforeach
                                 </tbody>

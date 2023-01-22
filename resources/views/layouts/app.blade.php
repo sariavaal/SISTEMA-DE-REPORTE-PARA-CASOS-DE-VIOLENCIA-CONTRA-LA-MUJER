@@ -32,12 +32,25 @@
                     @if (Auth::check())
                     
                     <ul class="navbar-nav me-auto">
+                    @can('administrar_usuarios')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">{{ __('Usuarios') }}</a>
                         </li> 
+                        @endcan
+                        @can('administrar_denuncias')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('acussations.index') }}">{{ __('Denuncias') }}</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('denuncia') }}">{{ __('Urgentes') }}</a>
+                        </li>
+                        @endcan
+                        @can('Ver_denuncias_propias')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('acussations.my') }}">{{ __('Mis Denuncias') }}</a>
+                        </li>
+                        @endcan
                     </ul>
                     @endif
                     
@@ -82,18 +95,7 @@
         </nav>
 
         <main class="py-4">
-        @if (Auth::check())
-       
-        <div class="card-header col-auto p-3 text-center">
-        <div class="card-body">
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ __('Sesión iniciada!') }}
-                   
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                        </div>
-                    </div>
- @endif
+
             @yield('content') 
            
         </main>

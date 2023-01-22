@@ -21,9 +21,9 @@ return new class extends Migration
             $table->enum('status', ['pending', 'in process','finished'])->nullable()->default('pending'); 
             $table->string('type_of_acusation');
             $table->string('description');
-            $table->double('lat_lon');
+            $table->double('lat');
+            $table->double('lon');
             $table->timestamps();
-
             $table->foreign('users_id')->references('id')->on('users')->onDelete("cascade");
 
 

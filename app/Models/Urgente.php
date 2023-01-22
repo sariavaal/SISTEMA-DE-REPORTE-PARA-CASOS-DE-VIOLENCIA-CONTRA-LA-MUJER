@@ -22,15 +22,14 @@ use Illuminate\Database\Eloquent\Model;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class Acussation extends Model
+class Urgente extends Model
 {
-    
+    protected $table = 'urgente';
     static $rules = [
-		'users_id' => 'required',
-		'type_of_acusation' => 'required',
-        'description'=>'required',
+        'description',
 		'lat' => 'required',
         'lon' => 'required',
+        'ci',
     ];
 
     protected $perPage = 20;
@@ -40,7 +39,7 @@ class Acussation extends Model
      *
      * @var array
      */
-    protected $fillable = ['users_id','status','type_of_acusation','description','lat','lon'];
+    protected $fillable = ['description','lat','lon','ci'];
 
 
     /**
@@ -54,10 +53,10 @@ class Acussation extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function user()
+   /* public function user()
     {
         return $this->hasOne('App\Models\User', 'id', 'users_id');
-    }
+    }*/
     
 
 }

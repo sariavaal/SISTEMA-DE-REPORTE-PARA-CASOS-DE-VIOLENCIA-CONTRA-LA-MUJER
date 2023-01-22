@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Acussation;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 
 
 /**
@@ -39,11 +39,13 @@ class AcussationController extends Controller
         $user= User::pluck('user_name','id');
         return view('acussation.create', compact('acussation','user'));
     }
-
-
-
    
-
+    public function my()
+    {
+        $acussations = Acussation::where('users_id', '=', Auth::user()->id)->paginate();
+        return view('acussation.my', compact('acussations'))
+            ->with('i', (request()->input('page', 1) - 1) * $acussations->perPage());
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -54,12 +56,16 @@ class AcussationController extends Controller
     public function store(Request $request)
     {
         request()->validate(Acussation::$rules);
-        $acussation = Acussation::create($request->all());
-        
-        return redirect()->route('acussations.index')
-            ->with('success', 'Denuncia realizada.');
+        $parametros = $request->all();
+        $parametros['status'] = 'pending';
+        $acussation = Acussation::create($parametros);
+        if (Auth::user()->hasRole('admin')) {
+            return redirect()->route('acussations.index');
+        } else {
+            return redirect()->route('home_usuario_logeado')
+            ->with('status', 'Denuncia realizada con exito.');
+        }
     }
-
     /**
      * Display the specified resource.
      *

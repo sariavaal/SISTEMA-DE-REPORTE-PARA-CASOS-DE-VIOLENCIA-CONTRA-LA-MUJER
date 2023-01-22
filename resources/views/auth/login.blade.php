@@ -65,6 +65,13 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="row mb-0">
+                            <div class="col-md-12 offset-md-4 py-3">
+                                <a href="{{ route('urgente') }}" class="btn btn-danger">
+                                    {{ __('Denuncia Urgente') }}
+                                </a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

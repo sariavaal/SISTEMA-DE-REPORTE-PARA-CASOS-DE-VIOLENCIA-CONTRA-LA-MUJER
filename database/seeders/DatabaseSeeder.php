@@ -19,21 +19,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $admin = Role::create(['name' => 'admin']);
-        $iniciar_sesion_permiso = Permission::create(['name' => 'Iniciar_sesion']);
-        $editar_usuario_permiso = Permission::create(['name' => 'Editar_usuarios']);
-        $ver_denuncia_permiso = Permission::create(['name'=>'Ver_denuncias']);
-        $ver_usuarios_permiso = Permission::create(['name'=>'Ver_usuarios']);
-        $admin->givePermissionTo($iniciar_sesion_permiso);
-        $admin->givePermissionTo($editar_usuario_permiso);
-        $admin->givePermissionTo($ver_denuncia_permiso);
-        $admin->givePermissionTo($ver_usuarios_permiso);
-
+        $administrar_denuncia_permiso = Permission::create(['name'=>'administrar_denuncias']);
+        $administrar_usuarios_permiso = Permission::create(['name'=>'administrar_usuarios']);
+        $admin->givePermissionTo($administrar_denuncia_permiso);
+        $admin->givePermissionTo($administrar_usuarios_permiso);
 
 
         $usuario_logueado = Role::create(['name' => 'usuario_logueado']);
+        $ver_denuncias_permiso = Permission::create(['name' => 'Ver_denuncias_propias']);
         $realizar_denuncia_permiso = Permission::create(['name' => 'Realizar_denuncia']);
-        $usuario_logueado->givePermissionTo($iniciar_sesion_permiso);
         $usuario_logueado->givePermissionTo($realizar_denuncia_permiso);
+        $usuario_logueado->givePermissionTo($ver_denuncias_permiso);
 
         $visitante = Role::create(['name' => 'visitante']);
         $registrarse_permiso = Permission::create(['name' => 'Registrarse']);
