@@ -1,49 +1,62 @@
-@extends('layouts.app')
-@section('template_title')
-   
-@endsection
-@section('content')
-    <section class="content container-fluid">
-        <div class="row">
-            <div class="col-md-12">
+    @extends('layouts.app')
+    @section('template_title')
+    
+    @endsection
+    @section('content')
+        <section class="content container-fluid">
+            <div class="row">
+                <div class="col-md-5 float-start">
 
-                @includeif('partials.errors')
+                    @includeif('partials.errors')
 
-                <div class="card card-default">
-                    <div class="card-header">
-                        <span class="card-title">Crear Denuncia</span>
-                    </div>
-                    <div class="card-body">
-                        <form method="POST" action="{{ route('envio') }}"  role="form" enctype="multipart/form-data">
-                            @csrf
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <span class="card-title">Crear Denuncia</span>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('envio') }}"  role="form" enctype="multipart/form-data">
+                                @csrf
 
-                            @include('public.form')
+                                @include('public.form')
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
+
+                <div class="col-md-5 float-end" id="map">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <span class="card-title">Mapa</span>
+                        </div>
+                        <div class="card-body" >
+                        
+                        </div>
+                    </div>
+                </div>
+
             </div>
-        </div>
-    </section>
-    <script>
+            <script>
 
-//Pedir activación de ubicación
-if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
+    //Pedir activación de ubicación
+    if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
+        
+        //Si es aceptada guardamos lo latitud y longitud
     
-    //Si es aceptada guardamos lo latitud y longitud
-   
-setInterval(() => {
+    setInterval(() => {
 
-     var lat = pos.coords.latitude;
-    var lon = pos.coords.longitude;
+        var lat = pos.coords.latitude;
+        var lon = pos.coords.longitude;
+        
+    }, 5000);
+    }, function(error) {
+
+        //Si es rechazada enviamos de error por consola
+        console.log('Ubicación no activada');
+    });
+
+
+    </script></section>
     
-}, 5000);
-}, function(error) {
+    @endsection
 
-    //Si es rechazada enviamos de error por consola
-    console.log('Ubicación no activada');
-});
-
-
-</script>
-@endsection
