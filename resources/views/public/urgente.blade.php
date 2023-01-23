@@ -24,39 +24,67 @@
                     </div>
                 </div>
 
-                <div class="col-md-5 float-end" id="map">
+                
+                 <div class="col-md-5 float-end">
                     <div class="card card-default">
                         <div class="card-header">
                             <span class="card-title">Mapa</span>
                         </div>
                         <div class="card-body" >
-                        
+                            <div id="mapDiv" > </div>
+                        <button id="button" class="btn btn-primary"> Mostrar ubicación </button>
+
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap"></script>
+    <script>
+    function initMap() {
+        const pyCoords = {lat:-23.442503, lng: -58.443832};
+
+
+        const  map= new google.maps.Map(mapDiv, {
+            center:pyCoords,
+            zoom: 6,
+        });
+        const marker = new google.maps.Marker({
+            position: pyCoords,
+            map: map,
+        });
+        
+        button.addEventListener("click",() =>{
+
+         if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                ({coords: {latitude, longitude} }) => {
+                    const coords = {
+                        lat : latitude,
+                        lng : longitude,
+                    };
+                    map.setCenter(coords);
+                    map.setZoom(8);
+                    marker.setPosition(coords);
+                },
+                () => {
+                    alert("Ocurrio un error");
+                }
+            );
+         }else{
+            alert("Tu navegador no dispone de geolocalizacion");
+
+         }
+         });
+         }
+
+    </script>
+
+
                         </div>
                     </div>
                 </div>
 
             </div>
-            <script>
-
-    //Pedir activación de ubicación
-    if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
-        
-        //Si es aceptada guardamos lo latitud y longitud
     
-    setInterval(() => {
 
-        var lat = pos.coords.latitude;
-        var lon = pos.coords.longitude;
-        
-    }, 5000);
-    }, function(error) {
-
-        //Si es rechazada enviamos de error por consola
-        console.log('Ubicación no activada');
-    });
-
-
-    </script></section>
+    </section>
     
     @endsection
 
