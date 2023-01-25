@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
-
+use Illuminate\Contracts\Auth\CanResetPassword;
 /**
  * Class User
  *
@@ -25,7 +25,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @package App
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
-class User extends Authenticatable
+class User extends Authenticatable implements CanResetPassword
 {
     use HasFactory, Notifiable, HasRoles;
     static $rules = [
@@ -60,5 +60,14 @@ class User extends Authenticatable
     public function getAuthPassword()
     {
         return $this->password;
+    }
+    /**
+     * Get the e-mail address where password reset links are sent.
+     *
+     * @return string
+     */
+    public function getEmailForPasswordReset()
+    {
+        return $this->user_email;
     }
 }

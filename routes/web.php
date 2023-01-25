@@ -1,7 +1,8 @@
 <?php
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Password;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,7 +23,31 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+//recuperar contraseña rutas
+//Route::post('password/email', 'Auth\ResetPasswordController@reset')->name('password.email');
+//Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+//Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+//Route::get('password/reset/{token} ', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 
+Route::get('/password/reset', function () {
+    return view('auth.passwords.email');
+})->middleware('guest')->name('password.request');
+ 
+Route::post('/password/email', function (Request $request) {
+    $request->validate(['user_email' => 'required|email']);
+ 
+    $status = Password::sendResetLink(
+        $request->only('user_email')
+    );
+ 
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with(['status' => __($status)])
+                : back()->withErrors(['user_email' => __($status)]);
+})->middleware('guest')->name('password.email');
+
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->middleware('guest')->name('password.reset');
 //rutas hacia los controladores de user y denuncia
 
 
@@ -32,6 +57,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //rutas publicas
 Route::get('/urgente', [App\Http\Controllers\PublicRoutesController::class, 'urgente'])->name('urgente');
 Route::post('/urgente', [App\Http\Controllers\PublicRoutesController::class,'store'])->name('envio');
+
+//Route::post('/auth', [App\Http\Controllers\ForgotPasswordController::class,'sendResetLinkEmail'])->name('reset');
 
 
 

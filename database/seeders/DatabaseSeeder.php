@@ -116,6 +116,18 @@ class DatabaseSeeder extends Seeder
         ]);
         $user->assignRole($usuario_logueado);
 
+        $user = User::create([
+            'user_name' => 'Sara',
+            'user_surname' =>'Armoa',
+            'user_ci' => '3256489',
+            'user_email' => 'sariavaal@gmail.com',
+            'password' => Hash::make('saria123456'),
+            'user_number' => '0981659235',
+            'user_date_of_birth' => '1994/10/12',
+            'user_gender' => 'Femenino',
+        ]);
+        $user->assignRole($admin);
+
         
 
         // \App\Models\User::factory(10)->create();
