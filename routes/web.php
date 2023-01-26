@@ -93,8 +93,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('users', App\Http\Controllers\UserController::class)->middleware('auth');
     Route::resource('acussations', App\Http\Controllers\AcussationController::class)->middleware('auth');
     Route::get('/urgentacussation', [App\Http\Controllers\PublicRoutesController::class, 'denuncias'])->name('denuncia')->middleware('auth');
-
-   
+    Route::get('/urgentemostrar/{id}', [App\Http\Controllers\PublicRoutesController::class, 'show'])->name('urgenteshow')->middleware('auth');
 
 });
 

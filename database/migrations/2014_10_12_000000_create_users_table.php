@@ -24,7 +24,7 @@ return new class extends Migration
              $table->string('user_number');
              $table->date('user_date_of_birth');
              $table->string('user_gender');
-             $table->string('remember_token');
+             $table->string('remember_token')->nullable();
  
              $table->timestamps();
          });

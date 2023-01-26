@@ -16,11 +16,7 @@
                                 {{ __('Denuncias') }}
                             </span>
 
-                             <div class="float-right">
-                                <a href="{{ route('acussations.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Realizar denuncia') }}
-                                </a>
-                              </div>
+                            
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -60,7 +56,7 @@
 
                                             <td>
                                                 <form action="{{ route('acussations.destroy',$acussation->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('acussations.show',$acussation->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('acussations.show', $acussation->id) }}"><i class="fa fa-fw fa-eye"></i> Show</a>
                                                     <a class="btn btn-sm btn-success" href="{{ route('acussations.edit',$acussation->id) }}"><i class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')

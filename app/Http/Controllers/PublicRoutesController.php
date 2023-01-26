@@ -35,5 +35,13 @@ class PublicRoutesController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $denuncias->perPage());
 
     }
+
+    public function show($id)
+    {
+        $urgente = Urgente::find($id);
+
+        return view('public.urgenteshow', compact('urgente'));
+    }
+
 }
 

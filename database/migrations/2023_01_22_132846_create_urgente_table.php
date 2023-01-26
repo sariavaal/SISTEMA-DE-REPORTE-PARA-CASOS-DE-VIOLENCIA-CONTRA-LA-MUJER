@@ -19,6 +19,7 @@ return new class extends Migration
             $table->double('lat');
             $table->double('lon');
             $table->integer('ci')->nullable();
+            $table->enum('status', ['pending', 'in process','finished'])->nullable()->default('pending'); 
             $table->timestamps();
         });
     }
