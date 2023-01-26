@@ -32,7 +32,7 @@
                         </div>
                         <div class="card-body" >
                             <div id="mapDiv" > </div>
-                        <button id="button" class="btn btn-primary"> Mostrar ubicación </button>
+                        <button id="button" class="btn btn-primary mt-3"> Mostrar ubicación </button>
 
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap"></script>
@@ -50,8 +50,7 @@
             map: map,
         });
         
-        button.addEventListener("click",() =>{
-
+        button.addEventListener("click",() =>{   
          if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 ({coords: {latitude, longitude} }) => {
@@ -62,11 +61,14 @@
                     map.setCenter(coords);
                     map.setZoom(8);
                     marker.setPosition(coords);
+                    document.getElementById('lat').setAttribute('value', latitude)
+                    document.getElementById('lon').setAttribute('value', longitude)
                 },
                 () => {
                     alert("Ocurrio un error");
                 }
             );
+            
          }else{
             alert("Tu navegador no dispone de geolocalizacion");
 

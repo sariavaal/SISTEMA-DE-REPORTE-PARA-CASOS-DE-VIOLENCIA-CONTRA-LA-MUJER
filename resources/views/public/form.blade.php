@@ -18,17 +18,17 @@
 
 <div class="form-group">
     {{ Form::label('Latitud') }}
-    {{ Form::text('lat', $urgente->lat, ['class' => 'form-control' . ($errors->has('lat') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+    {{ Form::text('lat', $urgente->lat, ['class' => 'form-control input_latitud' . ($errors->has('lat') ? ' is-invalid' : ''), 'placeholder' => '', 'id' => 'lat', 'readonly']) }}
     {!! $errors->first('lat', '<div class="invalid-feedback">:message</div>') !!}
 </div>
 <div class="form-group">
     {{ Form::label('Longitud') }}
-    {{ Form::text('lon', $urgente->lon, ['class' => 'form-control' . ($errors->has('lon') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+    {{ Form::text('lon', $urgente->lon, ['class' => 'form-control input_longitud' . ($errors->has('lon') ? ' is-invalid' : ''), 'placeholder' => '', 'id' => 'lon','readonly']) }}
     {!! $errors->first('lon', '<div class="invalid-feedback">:message</div>') !!}
 </div>
 
 
 <div class="d-grid gap-2 col-6 mx-auto">
-    <button type="submit" class="btn btn-primary mb-4">Enviar</button>
+    <button type="submit" class="btn btn-primary mb-4 mt-3">Enviar</button>
 </div>
 

@@ -66,8 +66,20 @@ class User extends Authenticatable implements CanResetPassword
      *
      * @return string
      */
+
+     //esta puerquesa faltaba para que envie los correos
     public function getEmailForPasswordReset()
     {
         return $this->user_email;
     }
+
+    public function routeNotificationForMail($notification)
+    {
+        // Return email address only...
+        return $this->user_email;
+ 
+        // Return email address and name...
+        //return [$this->email_address => $this->name];
+    }
+
 }
