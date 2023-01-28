@@ -14,7 +14,10 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.all.min.js"></script>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/jquery.min.js' ])
+
 </head>
 <body>
     <div id="app">
@@ -100,5 +103,82 @@
            
         </main>
     </div>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+    @can('administrar_usuarios')
+    setInterval(() => {
+        $.ajax({
+            url: "{{ route('check.urgent') }}" //url para preguntar si hay denuncias urgentes - ruta nueva
+            })
+            .done(function( data ) {
+                // preguntar si existe o no 
+                let id_urgente = data.id;
+                if (Object.keys(data).length !== 0) {
+                                    
+                    Swal.fire({
+                        title: 'Nueva denuncia urgente',
+                        text: 'Alguien necesita ayuda',
+                        icon: 'warning'
+                    }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            let ruta = '/urgentemostrar/'+id_urgente+'/inprogress'
+                            console.log(id_urgente)
+                            location.href = ruta
+                        } else if (result.isDenied) {
+                            Swal.fire('Changes are not saved', '', 'info')
+                        }
+                    })
+                }
+
+
+            });
+    }, 5000);
+    @endcan
+
+    //denunciante 
+    @can('Ver_denuncias_propias')
+    var denunciaStatus = 'pending';
+    
+        jQuery('#alertaenv').on('click', function() {
+            let checkPendingStatus = setInterval(() => {
+                $.ajax({
+                url: "https://fiddle.jshell.net/favicon.png" // crear ruta para preguntar el estado de una denuncia 
+                })
+                .done(function( data ) {
+                    // checkear si la denuncia termino y cambiar el estado de denunciaStatus si no es pending
+                    if (data.status == 'in process' && denunciaStatus == 'pending') {
+                        denunciaStatus = data.status;
+                        Swal.fire({
+                        title: 'Denuncia en Progreso',
+                        text: 'Su denuncia a sido atendida por un Oficial',
+                        icon: 'success'
+                        }).then((result) => {
+                            /* Read more about isConfirmed, isDenied below */
+                            if (result.isConfirmed) {
+                                
+                            } else if (result.isDenied) {
+                                Swal.fire('Changes are not saved', '', 'info')
+                            }
+                        })
+                    }
+                });            
+            }, 10000);
+
+            let checker = setInterval(() => {
+                if (denunciaStatus == 'in process') {
+                    clearInterval(checkPendingStatus);
+                }
+            }, 8000);
+
+        })
+    @endcan
+
+});
+</script>   
 </body>
 </html>
+
+

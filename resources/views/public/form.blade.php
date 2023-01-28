@@ -12,7 +12,7 @@
 
 <div class="form-group">
     {{ Form::label('Cédula de identidad') }}
-    {{ Form::text('ci', $urgente->ci, ['class' => 'form-control' . ($errors->has('ci') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+    {{ Form::number('ci', $urgente->ci, ['class' => 'form-control' . ($errors->has('ci') ? ' is-invalid' : ''), 'placeholder' => '', 'max' => "10000000", 'maxlenght' => 8]) }}
     {!! $errors->first('ci', '<div class="invalid-feedback">:message</div>') !!}
 </div>
 
@@ -29,6 +29,6 @@
 
 
 <div class="d-grid gap-2 col-6 mx-auto">
-    <button type="submit" class="btn btn-primary mb-4 mt-3">Enviar</button>
+    <button type="submit" class="btn btn-primary mb-4 mt-3" id="alertaenv">Enviar</button>
 </div>
 

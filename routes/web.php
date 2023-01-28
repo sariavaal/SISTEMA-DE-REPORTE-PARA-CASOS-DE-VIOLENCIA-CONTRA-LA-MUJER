@@ -94,7 +94,8 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::resource('acussations', App\Http\Controllers\AcussationController::class)->middleware('auth');
     Route::get('/urgentacussation', [App\Http\Controllers\PublicRoutesController::class, 'denuncias'])->name('denuncia')->middleware('auth');
     Route::get('/urgentemostrar/{id}', [App\Http\Controllers\PublicRoutesController::class, 'show'])->name('urgenteshow')->middleware('auth');
-
+    Route::get('/urgentemostrar/{id}/inprogress', [App\Http\Controllers\PublicRoutesController::class, 'showInprogress'])->name('urgenteshow.inprogress')->middleware('auth');
+    Route::get('/exist_urgent_acussation', [App\Http\Controllers\PublicRoutesController::class, 'checkUrgents'])->name('check.urgent')->middleware('auth');    
 });
 
 Route::group(['middleware' => ['role:usuario_logueado']], function () {

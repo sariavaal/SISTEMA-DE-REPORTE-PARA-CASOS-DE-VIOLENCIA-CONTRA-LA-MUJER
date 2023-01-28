@@ -16,6 +16,11 @@ class PublicRoutesController extends Controller
        // return view('public.urgente');
     }
 
+    public function checkUrgents()
+    {
+        $denunciasUrgentes = Urgente::where('status', '=','pending')->orderBy('id')->first();
+        return response()->json($denunciasUrgentes);
+    }
 
     public function store(Request $request)
     {
@@ -43,5 +48,21 @@ class PublicRoutesController extends Controller
         return view('public.urgenteshow', compact('urgente'));
     }
 
+    public function showInprogress($id)
+    {
+        $urgente = Urgente::find($id);
+        $urgente->status = 'in process';
+        $urgente->save();
+        return view('public.urgenteshow', compact('urgente'));
+    }
+    
+    public function notificacionParaDenuncianteUrgente($id)
+    {
+        $urgente = Urgente::find($id);
+        if ($urgente->status !== 'pending') {
+            return response()->json($urgente);
+        }
+
+    }
 }
 

@@ -39,8 +39,6 @@
     <script>
     function initMap() {
         const pyCoords = {lat:-23.442503, lng: -58.443832};
-
-
         const  map= new google.maps.Map(mapDiv, {
             center:pyCoords,
             zoom: 6,
@@ -50,8 +48,7 @@
             map: map,
         });
         
-        button.addEventListener("click",() =>{   
-         if(navigator.geolocation) {
+        if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 ({coords: {latitude, longitude} }) => {
                     const coords = {
@@ -71,13 +68,41 @@
             
          }else{
             alert("Tu navegador no dispone de geolocalizacion");
-
          }
-         });
          }
+    //denunciante 
+//    var denunciaStatus = 'pending';
+//    let checkPendingStatus = setInterval(() => {
+//        $.ajax({
+//        url: "https://fiddle.jshell.net/favicon.png" // crear ruta para preguntar el estado de una denuncia 
+//        })
+//        .done(function( data ) {
+//            // checkear si la denuncia termino y cambiar el estado de denunciaStatus si no es pending
+//            if (data.status == 'in process' && denunciaStatus == 'pending') {
+//                denunciaStatus = data.status;
+//                Swal.fire({
+//                title: 'Denuncia en Progreso',
+//                text: 'Su denuncia a sido atendida por un Oficial',
+//                icon: 'success'
+//                }).then((result) => {
+//                    /* Read more about isConfirmed, isDenied below */
+//                    if (result.isConfirmed) {
+//                        
+//                    } else if (result.isDenied) {
+//                        Swal.fire('Changes are not saved', '', 'info')
+//                    }
+//                })
+//            }
+//        });            
+//    }, 10000);
+//
+//    let checker = setInterval(() => {
+//        if (denunciaStatus == 'in process') {
+//            clearInterval(checkPendingStatus);
+//        }
+//    }, 8000);
 
     </script>
-
 
                         </div>
                     </div>
