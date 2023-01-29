@@ -17,20 +17,31 @@
 
         <div class="form-group">
             {{ Form::label('Descripción') }}
-            {{ Form::text('description', $acussation->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+            {{ Form::textarea('description', $acussation->description, ['class' => 'form-control' . ($errors->has('description') ? ' is-invalid' : ''), 'placeholder' => '']) }}
             {!! $errors->first('description', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 
         <div class="form-group">
             {{ Form::label('Latitud') }}
-            {{ Form::text('lat', $acussation->lat, ['class' => 'form-control' . ($errors->has('lat') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+            {{ Form::text('lat', $acussation->lat, ['class' => 'form-control input_latitud' . ($errors->has('lat') ? ' is-invalid' : ''), 'placeholder' => '','id' => 'lat', 'readonly',]) }}
             {!! $errors->first('lat', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Longitud') }}
-            {{ Form::text('lon', $acussation->lon, ['class' => 'form-control' . ($errors->has('lon') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+            {{ Form::text('lon', $acussation->lon, ['class' => 'form-control input_longitud' . ($errors->has('lon') ? ' is-invalid' : ''), 'placeholder' => '','id' => 'lon','readonly']) }}
             {!! $errors->first('lon', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+
+        @can('administrar_usuarios')
+        <div class="form-group">
+            {{ Form::label('Status') }}
+            {{ Form::select('status',['pending', 'in process', 'finished'], $acussation->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => '','id' => 'status']) }}
+            {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        @endcan
+
+
+
     </div>
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary mt-2">Enviar</button>

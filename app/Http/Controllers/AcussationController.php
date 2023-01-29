@@ -106,7 +106,7 @@ class AcussationController extends Controller
         $acussation->update($request->all());
 
         return redirect()->route('acussations.index')
-            ->with('success', 'Acussation updated successfully');
+            ->with('success', 'Denuncia actualizada con éxito');
     }
 
     /**

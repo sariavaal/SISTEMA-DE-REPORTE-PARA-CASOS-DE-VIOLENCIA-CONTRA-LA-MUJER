@@ -7,7 +7,7 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-5 float-start">
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
@@ -40,10 +40,47 @@
                             <strong>Status:</strong>
                             {{ $urgente->status }}
                         </div>
+                        <div class="form-group">
+                            <strong>Fecha y hora de la denuncia:</strong>
+                            {{ $urgente->created_at }}
+                        </div>
 
-                    </div>
+                        </div>
                 </div>
-            </div>
+                </div>
+        <div class="col-md-5 float-end">
+                    <div class="card card-default">
+                        <div class="card-header">
+                            <span class="card-title">Mapa</span>
+                        </div>
+                    </div>
+                        <div class="card-body" >
+                            <div id="mapDiv" ></div>
+                        </div>
         </div>
+                
+
+
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap"></script>
+<script>
+function initMap() {
+        const userCoords = {lat:{{$urgente->lat}}, lng: {{$urgente->lon}}};
+        const  map= new google.maps.Map(mapDiv, {
+            center:userCoords,
+            zoom: 6,
+        });
+        const marker = new google.maps.Marker({
+            position: userCoords,
+            map: map,
+        });
+        map.setCenter(userCoords);
+        map.setZoom(8);
+        marker.setPosition(userCoords);
+       
+         }
+</script>
+
+          
+</div>
     </section>
 @endsection

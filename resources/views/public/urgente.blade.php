@@ -36,6 +36,7 @@
 
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap"></script>
+    
     <script>
     function initMap() {
         const pyCoords = {lat:-23.442503, lng: -58.443832};
@@ -101,7 +102,7 @@
 //            clearInterval(checkPendingStatus);
 //        }
 //    }, 8000);
-
+    
     </script>
 
                         </div>

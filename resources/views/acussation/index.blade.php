@@ -50,7 +50,7 @@
 											<td>{{ $acussation->users_id }}</td> 
                                             <td>{{ $acussation->status }}</td>
 											<td>{{ $acussation->type_of_acusation }}</td>
-											<td>{{ $acussation->lat_lon }}</td>
+											<td>{{ $acussation->lat.','.$acussation->lon }}</td> 
                                             <td>{{ $acussation->description }}</td>
                                             
 
