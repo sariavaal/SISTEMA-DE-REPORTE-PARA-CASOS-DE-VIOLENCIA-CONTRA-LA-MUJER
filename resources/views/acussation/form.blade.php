@@ -35,7 +35,7 @@
         @can('administrar_usuarios')
         <div class="form-group">
             {{ Form::label('Status') }}
-            {{ Form::select('status',['pending', 'in process', 'finished'], $acussation->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => '','id' => 'status']) }}
+            {{ Form::select('status',['pending' => 'Pendiente','in process' => 'En proceso','finished'=> 'Finalizado'], $acussation->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => '','id' => 'status']) }}
             {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         @endcan
@@ -43,7 +43,14 @@
 
 
     </div>
-    <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary mt-2">Enviar</button>
-    </div>
+    <div class="container">
+  <div class="row">
+    <div class="col-sm">
+    <div class="box-footer mt-2">
+        <button type="submit" class="btn btn-success">Enviar</button>
+         <a class="btn btn-primary" href="{{ route('acussations.store') }}"> Volver</a>
+        </div>
+  </div>
+ 
+</div>
 </div>

@@ -39,7 +39,7 @@ class Urgente extends Model
      *
      * @var array
      */
-    protected $fillable = ['description','lat','lon','ci'];
+    protected $fillable = ['description','lat','lon','ci','status'];
 
 
     /**

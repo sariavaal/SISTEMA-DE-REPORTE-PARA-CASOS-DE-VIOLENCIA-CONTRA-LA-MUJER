@@ -14,7 +14,7 @@
                             <span class="card-title">Crear Denuncia</span>
                         </div>
                         <div class="card-body">
-                            <form method="POST" action="{{ route('envio') }}"  role="form" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('urgente.update') }}"  role="form" enctype="multipart/form-data">
                                 @csrf
 
                                 @include('public.form')
@@ -32,9 +32,12 @@
                         </div>
                         <div class="card-body" >
                             <div id="mapDiv" > </div>
-                        <button id="button" class="btn btn-primary mt-3"> Mostrar ubicación </button>
+                            <button id="button" class="btn btn-primary mt-3"> Mostrar ubicación </button>
 
-
+                        </div>
+                    </div>
+                </div>
+            </div>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap"></script>
     
     <script>
@@ -105,14 +108,8 @@
     
     </script>
 
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-    
+</section>
 
-    </section>
-    
-    @endsection
+@endsection
 

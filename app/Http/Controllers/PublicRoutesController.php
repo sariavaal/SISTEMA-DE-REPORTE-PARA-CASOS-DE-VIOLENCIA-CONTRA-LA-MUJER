@@ -64,5 +64,38 @@ class PublicRoutesController extends Controller
         }
 
     }
+
+    public function edit($id) 
+    {
+        $urgente = Urgente::find($id);
+
+        return view('public.editurgente', compact('urgente'));
+    }
+
+    public function update(Request $request, Urgente $urgente)
+    {
+        request()->validate(Urgente::$rules);
+        $urgente->update($request->all());
+
+        return redirect()->route('denuncia')
+            ->with('success', 'Denuncia Urgente actualizada con éxito');
+    }
+
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy($id)
+    {
+        $urgente = Urgente::find($id)->delete();
+
+        return redirect()->route('public.denuncia')
+            ->with('success', 'Denuncia eliminada con exito');
+    }
+
+
+
+
 }
 
