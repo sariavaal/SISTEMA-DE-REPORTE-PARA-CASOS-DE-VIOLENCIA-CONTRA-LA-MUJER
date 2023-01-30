@@ -71,10 +71,7 @@
             alert("Tu navegador no dispone de geolocalizacion");
         }
     }
-    document.addEventListener("DOMContentLoaded", function(event){  
 
-
-        });
          </script>
 
          </div>

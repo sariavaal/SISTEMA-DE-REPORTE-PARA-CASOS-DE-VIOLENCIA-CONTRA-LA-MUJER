@@ -28,7 +28,7 @@ class PublicRoutesController extends Controller
 
         $urgente = Urgente::create($request->all());
 
-        return redirect()->route('urgente')
+        return redirect()->route('seguimiento', ['id' => $urgente->id])
             ->with('status', 'Denuncia enviada con éxito.');
     }
 
@@ -39,6 +39,11 @@ class PublicRoutesController extends Controller
         return view('public.denuncia', compact('denuncias'))
             ->with('i', (request()->input('page', 1) - 1) * $denuncias->perPage());
 
+    }
+
+    public function seguimiento($id) {
+        $urgente = Urgente::find($id);
+        return view('public.urgenteshowseguimiento', compact('urgente'));
     }
 
     public function show($id)
@@ -62,7 +67,6 @@ class PublicRoutesController extends Controller
         if ($urgente->status !== 'pending') {
             return response()->json($urgente);
         }
-
     }
 
     public function edit($id) 
@@ -93,9 +97,5 @@ class PublicRoutesController extends Controller
         return redirect()->route('public.denuncia')
             ->with('success', 'Denuncia eliminada con exito');
     }
-
-
-
-
 }
 

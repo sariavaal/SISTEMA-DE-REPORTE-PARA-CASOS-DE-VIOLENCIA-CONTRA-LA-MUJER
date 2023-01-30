@@ -83,8 +83,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //rutas publicas
 Route::get('/urgente', [App\Http\Controllers\PublicRoutesController::class, 'urgente'])->name('urgente');
 Route::post('/urgente', [App\Http\Controllers\PublicRoutesController::class,'store'])->name('envio');
-
+Route::get('/seguimiento/{id}', [App\Http\Controllers\PublicRoutesController::class,'seguimiento'])->name('seguimiento');
 //Route::post('/auth', [App\Http\Controllers\ForgotPasswordController::class,'sendResetLinkEmail'])->name('reset');
+Route::get('/seguimiento_urgent/{id}', [App\Http\Controllers\PublicRoutesController::class,'notificacionParaDenuncianteUrgente'])->name('urgent.seguimiento');
 
 
 
