@@ -98,7 +98,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/urgentemostrar/{id}/inprogress', [App\Http\Controllers\PublicRoutesController::class, 'showInprogress'])->name('urgenteshow.inprogress')->middleware('auth');
     Route::get('/exist_urgent_acussation', [App\Http\Controllers\PublicRoutesController::class, 'checkUrgents'])->name('check.urgent')->middleware('auth');   
     
-    Route::delete('/urgente', [App\Http\Controllers\PublicRoutesController::class,'destroy'])->name('urgente.destroy');
+    Route::delete('/urgente/{id}', [App\Http\Controllers\PublicRoutesController::class,'destroy'])->name('urgente.destroy');
     Route::get('/urgente/{id}', [App\Http\Controllers\PublicRoutesController::class,'edit'])->name('urgente.edit');
     Route::patch('/urgente/{urgente}', [App\Http\Controllers\PublicRoutesController::class,'update'])->name('urgente.update');
     

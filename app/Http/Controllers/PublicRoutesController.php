@@ -94,7 +94,7 @@ class PublicRoutesController extends Controller
     {
         $urgente = Urgente::find($id)->delete();
 
-        return redirect()->route('public.denuncia')
+        return redirect()->route('denuncia')
             ->with('success', 'Denuncia eliminada con exito');
     }
 }
