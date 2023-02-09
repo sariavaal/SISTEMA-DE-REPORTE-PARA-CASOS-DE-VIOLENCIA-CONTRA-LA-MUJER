@@ -48,7 +48,6 @@
     <div class="col-sm">
     <div class="box-footer mt-2">
         <button type="submit" class="btn btn-success">Enviar</button>
-         <a class="btn btn-primary" href="{{ route('acussations.store') }}"> Volver</a>
         </div>
   </div>
  

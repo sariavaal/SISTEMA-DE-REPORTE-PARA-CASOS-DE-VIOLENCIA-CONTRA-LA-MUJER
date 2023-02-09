@@ -32,7 +32,7 @@
                         </div>
                         <div class="card-body" >
                             <div id="mapDiv" > </div>
-                            <button id="button" class="btn btn-primary mt-3"> Mostrar ubicación </button>
+                            
 
                         </div>
                     </div>
