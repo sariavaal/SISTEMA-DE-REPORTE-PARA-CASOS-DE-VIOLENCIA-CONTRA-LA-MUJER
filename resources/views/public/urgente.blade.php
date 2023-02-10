@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap" async defer ></script>
+    
     
     <script>
         $(document).ready(function() {
@@ -78,7 +78,7 @@
 })
     </script>
 
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap"></script>
 </section>
 
 @endsection
