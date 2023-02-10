@@ -20,7 +20,7 @@ export default defineConfig({
         },
         strictPort: true,
         hmr: {
-            host: '137.184.92.33',
+            host: 'sosmujer.me',
         },
     }
 });
