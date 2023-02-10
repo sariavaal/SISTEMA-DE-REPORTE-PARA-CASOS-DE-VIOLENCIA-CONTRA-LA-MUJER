@@ -38,10 +38,9 @@
                     </div>
                 </div>
             </div>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap"></script>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function(event) {
+        //document.addEventListener("DOMContentLoaded", function(event) {
     function initMap() {
         const pyCoords = {lat:-23.442503, lng: -58.443832};
         const  map= new google.maps.Map(mapDiv, {
@@ -75,7 +74,7 @@
             alert("Tu navegador no dispone de geolocalizacion");
          }
     }
-});
+//});
     </script>
 
 
