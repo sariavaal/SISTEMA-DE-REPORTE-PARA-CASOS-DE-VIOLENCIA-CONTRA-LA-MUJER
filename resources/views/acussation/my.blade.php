@@ -34,7 +34,10 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
+
+                                         @can('administrar_denuncias')
 										<th>Id Usuario</th>
+                                        @endcan
 										<th>Estado</th>
 										<th>Tipo de acusación</th>
 										<th>Ubicación</th>
@@ -44,7 +47,9 @@
                                 <tbody>
                                     @foreach ($acussations as $acussation)
                                         <tr>
+                                        @can('administrar_denuncias')
 											<td>{{ $acussation->users_id }}</td> 
+                                            @endcan
                                             <td>{{ $acussation->status }}</td>
 											<td>{{ $acussation->type_of_acusation }}</td>
 											<td>{{ $acussation->lat.','.$acussation->lon }}</td>
