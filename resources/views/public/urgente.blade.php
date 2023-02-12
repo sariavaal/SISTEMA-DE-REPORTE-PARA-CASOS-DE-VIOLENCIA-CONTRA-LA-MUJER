@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-    
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA8dJes6KRdgiJfA5HMhfimfVOIos91R8&callback=initMap"></script>
     <script>
         //document.addEventListener("DOMContentLoaded", function(event) {
     function initMap() {
