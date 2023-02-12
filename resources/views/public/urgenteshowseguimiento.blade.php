@@ -7,6 +7,11 @@
 @section('content')
     <section class="content container-fluid">
         <div class="row">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="col-md-5 float-start">
                 <div class="card">
                     <div class="card-header">
