@@ -6,10 +6,17 @@
                 {{ session('status') }}
             </div>
         @endif
+        @can('administrar_denuncias')
+        <div class="form-group">
+            {{ Form::hidden('users_id', $acussation->users_id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => '']) }}
+            {!! $errors->first('users_id', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        @else
         <div class="form-group">
             {{ Form::hidden('users_id',auth()->user()->id, ['class' => 'form-control' . ($errors->has('users_id') ? ' is-invalid' : ''), 'placeholder' => '']) }}
             {!! $errors->first('users_id', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        @endcan
         <div class="form-group">
             {{ Form::hidden('type_of_acusation', 'standard', ['class' => 'form-control' . ($errors->has('standard_acussation') ? ' is-invalid' : ''), 'placeholder' => '']) }}
             {!! $errors->first('type_of_acusation', '<div class="invalid-feedback">:message</div>') !!}
