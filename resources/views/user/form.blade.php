@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             {{ Form::label('Genero') }}
-            {{ Form::text('user_gender', $user->user_gender, ['class' => 'form-control' . ($errors->has('user_gender') ? ' is-invalid' : ''), 'placeholder' => 'User Gender']) }}
+            {{ Form::select('user_gender', ['Masculino' => 'Masculino', 'Femenino' => 'Femenino','Sin especificar' => 'Sin especificar'], $user->user_gender, ['class' => 'form-control' . ($errors->has('user_gender') ? ' is-invalid' : '')]) }}
             {!! $errors->first('user_gender', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

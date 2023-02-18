@@ -86,12 +86,8 @@ Route::post('/urgente', [App\Http\Controllers\PublicRoutesController::class,'sto
 Route::get('/seguimiento/{id}', [App\Http\Controllers\PublicRoutesController::class,'seguimiento'])->name('seguimiento');
 //Route::post('/auth', [App\Http\Controllers\ForgotPasswordController::class,'sendResetLinkEmail'])->name('reset');
 Route::get('/seguimiento_urgent/{id}', [App\Http\Controllers\PublicRoutesController::class,'notificacionParaDenuncianteUrgente'])->name('urgent.seguimiento');
-
-
-
-
+Route::resource('users', App\Http\Controllers\UserController::class)->middleware('auth');
 Route::group(['middleware' => ['role:admin']], function () {
-    Route::resource('users', App\Http\Controllers\UserController::class)->middleware('auth');
     Route::resource('acussations', App\Http\Controllers\AcussationController::class)->middleware('auth');
     Route::get('/urgentacussation', [App\Http\Controllers\PublicRoutesController::class, 'denuncias'])->name('denuncia')->middleware('auth');
     Route::get('/urgentemostrar/{id}', [App\Http\Controllers\PublicRoutesController::class, 'show'])->name('urgenteshow')->middleware('auth');
@@ -101,10 +97,12 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::delete('/urgente/{id}', [App\Http\Controllers\PublicRoutesController::class,'destroy'])->name('urgente.destroy');
     Route::get('/urgente/{id}', [App\Http\Controllers\PublicRoutesController::class,'edit'])->name('urgente.edit');
     Route::patch('/urgente/{urgente}', [App\Http\Controllers\PublicRoutesController::class,'update'])->name('urgente.update');
-    
+
 });
 
 Route::group(['middleware' => ['role:usuario_logueado']], function () {
     Route::post('/acussations', [App\Http\Controllers\AcussationController::class, 'store'])->name('acussations.store');
     Route::get('/my_acussations', [App\Http\Controllers\AcussationController::class, 'my'])->name('acussations.my');
 });
+Route::get('/my_user', [App\Http\Controllers\UserController::class,'my_user'])->name('users_my')->middleware('auth');
+Route::get('/edit_my_user', [App\Http\Controllers\UserController::class,'editar_my'])->name('users_my_edit')->middleware('auth');

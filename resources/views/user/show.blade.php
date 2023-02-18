@@ -11,38 +11,42 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="float-left">
-                            <span class="card-title">Show User</span>
+                            <span class="card-title">Mostrar usuario</span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('users.index') }}"> Atrás</a>
                         </div>
                     </div>
 
                     <div class="card-body">
                         
                         <div class="form-group">
-                            <strong>User Name:</strong>
+                            <strong>Nombre:</strong>
                             {{ $user->user_name }}
                         </div>
                         <div class="form-group">
-                            <strong>User Ci:</strong>
+                            <strong>Apellido:</strong>
+                            {{ $user->user_surname }}
+                        </div>
+                        <div class="form-group">
+                            <strong>Cédula:</strong>
                             {{ $user->user_ci }}
                         </div>
                         <div class="form-group">
-                            <strong>User Email:</strong>
+                            <strong>Correo:</strong>
                             {{ $user->user_email }}
                         </div>
                         <div class="form-group">
-                            <strong>User Password:</strong>
+                            <strong>Contraseña:</strong>
                             {{ $user->user_password }}
                         </div>
                         <div class="form-group">
-                            <strong>User Date Of Birth:</strong>
+                            <strong>Fecha de nacimiento:</strong>
                             {{ $user->user_date_of_birth }}
                         </div>
                         <div class="form-group">
-                            <strong>User Gender:</strong>
-                            {{ $user->user_gender }}
+                            <strong>Género:</strong>
+                            {{ $user->user_gender }} 
                         </div>
 
                     </div>

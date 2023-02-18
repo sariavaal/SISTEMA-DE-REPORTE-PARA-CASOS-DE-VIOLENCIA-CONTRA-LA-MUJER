@@ -7,6 +7,7 @@ use App\Models\Acussation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Auth;
 /**
  * Class UserController
  * @package App\Http\Controllers
@@ -20,8 +21,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (! Auth::user()->hasRole('admin')) {
+            return redirect()->route('acussations.my');
+        }
         $users = User::paginate();
-
         return view('user.index', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
@@ -33,11 +36,11 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('acussations.my');
+        }
         $user = new User();
         return view('user.create', compact('user'));
-        
-
-
     }
 
     /**
@@ -48,6 +51,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('acussations.my');
+        }       
         request()->validate(User::$rules);
 
         $user = User::create($request->all());
@@ -64,11 +70,26 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        if (Auth::user()->id !== $id && !Auth::user()->hasRole('admin')) {
+            return redirect()->route('acussations.my');
+        }
         $user = User::find($id);
-
         return view('user.show', compact('user'));
     }
 
+    public function my_user()
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        return view('user.show', compact('user'));
+    }
+
+    public function editar_my()
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -77,6 +98,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('acussations.my');
+        }
         $user = User::find($id);
         return view('user.edit', compact('user'));
     }
@@ -94,8 +118,14 @@ class UserController extends Controller
         $parametros = $request->all();
         $parametros["password"] = Hash::make($request->password);
         $user->update($parametros);
-        return redirect()->route('users.index')
+        if (Auth::user()->hasRole('admin')) {
+            return redirect()->route('users.index')
             ->with('success', 'Datos actualizados con éxito');
+        } else {
+            return redirect()->route('users_my')
+            ->with('success', 'Datos actualizados con éxito');
+        }
+
     }
 
    
@@ -107,8 +137,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('acussations.my');
+        }
         $user = User::find($id)->delete();
-
         return redirect()->route('users.index')
             ->with('success', 'Usuario eliminado con éxito');
     }

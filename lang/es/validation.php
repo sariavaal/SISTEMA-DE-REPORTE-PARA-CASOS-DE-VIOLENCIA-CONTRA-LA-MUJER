@@ -146,6 +146,17 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'user_email' => 'correo',
+        'user_name' => 'nombre',
+        'user_ci' => 'cedula de identidad',
+        'user_surname' => 'apellido',
+        'user_date_of_birth' => 'fecha de nacimiento',
+        'user_gender' => 'genero',
+        'user_number' => 'número de telefono',
+        'user_date' => 'fecha de nacimiento',
+        'password' => 'contraseña',
+        'description'=>'descripción'
+    ],
 
 ];
