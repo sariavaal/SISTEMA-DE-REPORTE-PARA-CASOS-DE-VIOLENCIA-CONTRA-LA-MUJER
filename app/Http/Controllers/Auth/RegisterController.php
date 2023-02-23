@@ -56,7 +56,7 @@ class RegisterController extends Controller
             'user_email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'user_number' => ['required', 'string'],
-            'user_date_of_birth' => ['required', 'date','before:31/12/2022'],
+            'user_date_of_birth' => ['required', 'date','before:12/31/2022'],
             'user_gender' => ['required', 'string', 'max:255']
         ]);
        /* if ($validator->fails()) {

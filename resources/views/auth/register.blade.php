@@ -93,10 +93,9 @@
 
                             <div class="col-md-6">
                                 <select  class="form-select" id="floatingSelectGrid" class="form-control @error('user_gender') is-invalid @enderror" name="user_gender" value="{{ old('user_gender') }}" required autocomplete="user_gender" >
-                                    <option selected>Seleccionar</option>
+                                    <option value="Sin especificar">Sin especificar</option>
                                     <option value="Femenino">Femenino</option>
                                     <option value="Masculino">Masculino</option>
-                                    <option value="Sin especificar">Sin especificar</option>
                                 </select>
                                 @error('user_gender')
                                     <span class="invalid-feedback" role="alert">
