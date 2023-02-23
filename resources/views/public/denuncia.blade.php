@@ -5,6 +5,23 @@
 @endsection
 
 @section('content')
+    <div class="py-3  px-4 border-top border-bottom row">
+        <form action="{{ route('denuncia') }}" method="GET">
+            <div class="col-2 float-start">
+                Filtrar Busqueda :
+            </div>          
+            <?php $status = isset($_GET['status']) ? $_GET['status'] : '' ;?>
+            <div class="col-3 float-start">
+                <select class="form-select" name="status" aria-label="Default select example">
+                    <option>Seleccione estado</option>
+                    <option <?= $status == 'pending' ? 'selected="selected"' : '' ;?> value="pending">Pendiente</option>
+                    <option <?= $status == 'in process' ? 'selected="selected"' : '' ;?> value="in process">En Progreso</option>
+                    <option <?= $status == 'finished' ? 'selected="selected"' : '' ;?> value="finished">Finalizado</option>
+                </select>
+            </div>    
+            <button type="submit" class="btn btn-primary col-2 float-end">Buscar</button>  
+        </form>
+    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
@@ -24,7 +41,8 @@
 											<td>{{ $denuncia->id }}</td> 
                                             <td>{{ $denuncia->description }}</td>
 											<td>{{ $denuncia->ci }}</td>
-                                            <th>{{$denuncia->status}}</th>
+                                            <?php $estados = ['pending' => 'Pendiente', 'in process' => 'En Progreso', 'finished' => 'Finalizado']?>
+                                            <td>{{ isset($estados[$denuncia->status]) ? $estados[$denuncia->status] : '' ; }}</td>
 											<td>{{ $denuncia->lat.','.$denuncia->lon }}</td> 
                                             <td>
                                                

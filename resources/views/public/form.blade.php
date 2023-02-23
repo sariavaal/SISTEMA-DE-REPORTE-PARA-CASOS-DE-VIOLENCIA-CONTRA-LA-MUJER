@@ -30,7 +30,7 @@
 @can('administrar_usuarios')
         <div class="form-group">
             {{ Form::label('Status') }}
-            {{ Form::select('status',['pending' => 'Pendiente','in process' => 'En proceso','finished'=> 'Finalizado'], $urgente->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''), 'placeholder' => '','id' => 'status']) }}
+            {{ Form::select('status',['pending' => 'Pendiente','in process' => 'En proceso','finished'=> 'Finalizado'], $urgente->status, ['class' => 'form-control' . ($errors->has('status') ? ' is-invalid' : ''),'id' => 'status']) }}
             {!! $errors->first('status', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 @endcan

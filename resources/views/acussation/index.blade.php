@@ -8,15 +8,29 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
+            <div class="py-3  px-4 border-top border-bottom row">
+                <form action="{{ route('acussations.index') }}" method="GET">
+                    <div class="col-2 float-start">
+                        Filtrar Busqueda :
+                    </div>          
+                    <?php $status = isset($_GET['status']) ? $_GET['status'] : '' ;?>
+                    <div class="col-3 float-start">
+                        <select class="form-select" name="status" aria-label="Default select example">
+                            <option>Seleccione estado</option>
+                            <option <?= $status == 'pending' ? 'selected="selected"' : '' ;?> value="pending">Pendiente</option>
+                            <option <?= $status == 'in process' ? 'selected="selected"' : '' ;?> value="in process">En Progreso</option>
+                            <option <?= $status == 'finished' ? 'selected="selected"' : '' ;?> value="finished">Finalizado</option>
+                        </select>
+                    </div>    
+                    <button type="submit" class="btn btn-primary col-2 float-end">Buscar</button>  
+                </form>
+            </div>
+            <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-
                             <span id="card_title">
                                 {{ __('Denuncias') }}
-                            </span>
-
-                            
+                            </span>  
                         </div>
                     </div>
                     @if ($message = Session::get('success'))
@@ -38,8 +52,6 @@
 										<th>Tipo de acusación</th>
 										<th>Ubicación</th>
                                         <th>Descripción</th>
-
-
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -50,8 +62,9 @@
                                         @can('administrar_denuncias')
 											<td>{{ $acussation->users_id }}</td> 
                                             @endcan
-                                            <td>{{ $acussation->status }}</td>
-											<td>{{ $acussation->type_of_acusation }}</td>
+                                            <?php $estados = ['pending' => 'Pendiente', 'in process' => 'En Progreso', 'finished' => 'Finalizado']?>
+                                            <td>{{ isset($estados[$acussation->status]) ? $estados[$acussation->status] : '' ; }}</td>
+											<td>{{ $acussation->type_of_acusation == 'standard' ? 'Estandar' : 'Urgente' }}</td>
 											<td>{{ $acussation->lat.','.$acussation->lon }}</td> 
                                             <td>{{ $acussation->description }}</td>
                                             

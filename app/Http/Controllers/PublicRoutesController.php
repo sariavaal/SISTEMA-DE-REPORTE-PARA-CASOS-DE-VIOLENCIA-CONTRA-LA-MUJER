@@ -33,8 +33,26 @@ class PublicRoutesController extends Controller
     }
 
     public function denuncias(){
-
-        $denuncias = Urgente::paginate();
+        $denuncias = [];
+        if (isset($_GET['status'])) {
+            $status = $_GET['status'];
+            switch ($status) {
+                case 'pending':
+                    $denuncias = Urgente::where('status', '=', 'pending')->paginate();
+                    break;
+                case 'in process':
+                    $denuncias = Urgente::where('status', '=', 'in process')->paginate();
+                    break;                
+                case 'finished':
+                    $denuncias = Urgente::where('status', '=', 'finished')->paginate();
+                    break;
+                default:
+                    $denuncias = Urgente::paginate();
+                    break;
+            }
+        } else {
+            $denuncias = Urgente::paginate();
+        }
 
         return view('public.denuncia', compact('denuncias'))
             ->with('i', (request()->input('page', 1) - 1) * $denuncias->perPage());

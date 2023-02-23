@@ -21,7 +21,26 @@ class AcussationController extends Controller
      */
     public function index()
     {
-        $acussations = Acussation::paginate();
+        $acussations = [];
+        if (isset($_GET['status'])) {
+            $status = $_GET['status'];
+            switch ($status) {
+                case 'pending':
+                    $acussations = Acussation::where('status', '=', 'pending')->paginate();
+                    break;
+                case 'in process':
+                    $acussations = Acussation::where('status', '=', 'in process')->paginate();
+                    break;                
+                case 'finished':
+                    $acussations = Acussation::where('status', '=', 'finished')->paginate();
+                    break;
+                default:
+                    $acussations = Acussation::paginate();
+                    break;
+            }
+        } else {
+            $acussations = Acussation::paginate();
+        }
 
         return view('acussation.index', compact('acussations'))
             ->with('i', (request()->input('page', 1) - 1) * $acussations->perPage());
