@@ -43,7 +43,9 @@
                         </div>
                         <div class="form-group">
                             <strong>Status:</strong>
-                            {{ $urgente->status }}
+                            <?php $estados = ['pending' => 'Pendiente', 'in process' => 'En Progreso', 'finished' => 'Finalizado']?>
+                            {{ isset($estados[$urgente->status]) ? $estados[$urgente->status] : '' ; }}
+                           
                         </div>
                         <div class="form-group">
                             <strong>Fecha y hora de la denuncia:</strong>
