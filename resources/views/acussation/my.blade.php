@@ -50,8 +50,9 @@
                                         @can('administrar_denuncias')
 											<td>{{ $acussation->users_id }}</td> 
                                             @endcan
-                                            <td>{{ $acussation->status }}</td>
-											<td>{{ $acussation->type_of_acusation }}</td>
+                                            <?php $estados = ['pending' => 'Pendiente', 'in process' => 'En Progreso', 'finished' => 'Finalizado']?>
+                                            <td>{{ isset($estados[$acussation->status]) ? $estados[$acussation->status] : '' ; }}</td>
+											<td>{{ $acussation->type_of_acusation == 'standard' ? 'Estandar' : 'Urgente' }}</td>
 											<td>{{ $acussation->lat.','.$acussation->lon }}</td>
                                             <td>{{ $acussation->description }}</td> 
                                         </tr>
