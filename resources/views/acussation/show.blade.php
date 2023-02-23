@@ -23,7 +23,7 @@
                       
                         <div class="form-group">
                             <strong>Tipo de acusación:</strong>
-                            {{ $acussation->type_of_acusation }}
+                            {{ $acussation->type_of_acusation == 'standard' ? 'Estandar' : 'Urgente' }}
                         </div>
                      
                         <div class="form-group">
