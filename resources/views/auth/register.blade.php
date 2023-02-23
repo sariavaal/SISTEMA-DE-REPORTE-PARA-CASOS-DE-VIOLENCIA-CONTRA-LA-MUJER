@@ -70,7 +70,7 @@
                             <label for="user_email" class="col-md-4 col-form-label text-md-end">{{ __('Correo') }}</label>
 
                             <div class="col-md-6">
-                                <input id="user_email" type="email" class="form-control @error('user_email') is-invalid @enderror" name="user_email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="user_email" type="email" class="form-control @error('user_email') is-invalid @enderror" name="user_email" value="{{ old('user_email') }}" required autocomplete="email">
 
                                 @error('user_email')
                                     <span class="invalid-feedback" role="alert">

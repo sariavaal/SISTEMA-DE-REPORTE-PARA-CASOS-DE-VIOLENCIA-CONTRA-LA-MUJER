@@ -138,6 +138,6 @@ class AcussationController extends Controller
         $acussation = Acussation::find($id)->delete();
 
         return redirect()->route('acussations.index')
-            ->with('success', 'Acussation deleted successfully');
+            ->with('success', 'Denuncia eliminada con éxito');
     }
 }
